@@ -92,12 +92,15 @@ function mouseReleased(){
 
 function keyPressed(){
     if(keyCode === 32){
-       // slingshot.attach(bird.body);
+        Matter.Body.setPosition(bird.body, {x: 200, y: 50});
+       slingshot.attach(bird.body);
+       gameState = "onSling";
+       bird.trajectory = [];
     }
 }
 
 async function response(){
-    var data = await fetch("http://worldtimeapi.org/api/timezone/Asia/tokyo");
+    var data = await fetch("https://worldtimeapi.org/api/timezone/Asia/Kolkata");
     var responseJson = await data.json();
     var hr = responseJson.datetime.slice(11,13);
 
